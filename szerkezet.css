@@ -1,0 +1,88 @@
+@charset "UTF-8";
+
+body {
+    background: lightpink; 
+    margin: auto;
+    width: 80%;
+}
+
+
+main, article, header{
+    border: 1px solid grey;
+    padding: 10px;
+    background: white; 
+    box-sizing: border-box;/*a padding is beleszámít a szélességbe*/
+
+}
+
+main{ background: hotpink;
+      display: flex;
+      /*megtöri az egymás melletti oszlopokat:*/
+      flex-direction: row; /*column: felülről lefele, 1 oszlopba rendezi; 
+                           row: egymás mellé r.; 
+                           row-reverse: sor szinten fordított sorrend*/
+      flex-wrap: wrap; /*sortörést iktat be*/
+
+}
+
+header{
+    width: 100%;
+}
+
+article{
+    /*width: 200px;*/
+    /* width: 33.3333%; /*3 legyen egymás mellett*/ 
+    /*width: calc(33.333333% - 10px); /*kiszámolja az elemek szélességét*/
+    /*nem fér el 3 elem a margó miatt --> calc-ra van szükség, mert 33%+5px lesz --> összesen 5+5 px lesz a margó*/
+    /*ha 4 elemet akarnánk elhelyezni egy sorban, azonos szélességgel: calc(25% - 10px)*/
+    /*width: calc(50% - 10px); --> ha 2 sorban 2 elemet (2x2-es "tábla") akarunk egységesen elhelyezni*/
+    margin: 5px; 
+
+}
+
+
+/*szülőelem: display: flex, tehát a szülőelemhez képest nézi a gyerekelemek sorszámát; 
+a display: flex előtag nélkül nem működik*/
+main article:nth-child(3){
+    color: darkorchid;
+    order: -1; /*hozzárendelek egy nagyságrendi sorrendet; 
+               a legvégére akarom tenni: nagyon nagy számot adok meg; a legelejére akarom tenni: -1; */
+}
+
+main header {
+    order: -2;
+}
+
+span {
+    color: violet;
+    border: 1px solid pink;
+    width: 100px;
+    background: lightcyan;
+}
+
+.span1 {    
+    /*display: block; /*egymás alá, új sort szúr be, míg a sima inline esetében nem illeszt be új sort, az elem "beleolvad" a környezetébe"*/
+    display: inline; /*egymás mellett vannak; sima inline esetén nem tudok szélességet állítani*/
+}
+
+.span2 {     
+    display: inline-block;     
+}
+
+article div{
+    border: 1px dotted darkorchid;
+    color: bisque;
+    background: hotpink
+}
+
+
+/*az első elem header, ezért az 1-es child értéknél nem észlelünk változást*/
+
+@media screen and (max-width: 600px){
+    main{
+        flex-direction: column;
+    }
+    article{
+        width: 100%;
+    }
+}
