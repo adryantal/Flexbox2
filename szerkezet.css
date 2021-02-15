@@ -2,8 +2,7 @@
 
 body {
     background: lightpink; 
-    margin: auto;
-    width: 80%;
+    
 }
 
 
@@ -22,6 +21,8 @@ main{ background: hotpink;
                            row: egymás mellé r.; 
                            row-reverse: sor szinten fordított sorrend*/
       flex-wrap: wrap; /*sortörést iktat be*/
+      margin: auto;
+      width: 80%;
 
 }
 
@@ -32,7 +33,7 @@ header{
 article{
     /*width: 200px;*/
     /* width: 33.3333%; /*3 legyen egymás mellett*/ 
-    /*width: calc(33.333333% - 10px); /*kiszámolja az elemek szélességét*/
+    width: calc(33.333333% - 10px); /*kiszámolja az elemek szélességét
     /*nem fér el 3 elem a margó miatt --> calc-ra van szükség, mert 33%+5px lesz --> összesen 5+5 px lesz a margó*/
     /*ha 4 elemet akarnánk elhelyezni egy sorban, azonos szélességgel: calc(25% - 10px)*/
     /*width: calc(50% - 10px); --> ha 2 sorban 2 elemet (2x2-es "tábla") akarunk egységesen elhelyezni*/
@@ -80,9 +81,19 @@ article div{
 
 @media screen and (max-width: 600px){
     main{
+        display: flex;
         flex-direction: column;
+        align-content: center;
+        
     }
+    
+    header {
+        place-self: center;
+    }
+    
+    
     article{
-        width: 100%;
+        width: 100%;      
+        
     }
 }
